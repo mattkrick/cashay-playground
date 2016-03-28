@@ -39,10 +39,6 @@ const dataSchema = {
   recentPosts: arrayOf(post)
 };
 
-//debugger
-//const normalized = normalize(data, dataSchema);
-//console.log(normalized);
-
 export default class App extends Component {
   fetchData({query, variables}) {
     let queryVariables = {};
