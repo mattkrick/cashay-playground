@@ -1,17 +1,19 @@
-import clientSchema from '../node_modules/cashay/src/__tests__/clientSchema.json';
-import {normalizeResponse} from '../node_modules/cashay/lib/normalizeResponse';
-import {buildExecutionContext} from '../node_modules/cashay/lib/buildExecutionContext';
-import {denormalizeStore} from '../node_modules/cashay/lib/denormalizeStore';
-import {minimizeQueryAST} from '../node_modules/cashay/lib/minimizeQueryAST';
+import clientSchema from 'cashay/src/__tests__/clientSchema.json';
+import {normalizeResponse} from 'cashay/lib/normalizeResponse';
+import {buildExecutionContext} from 'cashay/lib/buildExecutionContext';
+import {denormalizeStore} from 'cashay/lib/denormalizeStore';
+import {printMinimalQuery} from 'cashay/lib/minimizeQueryAST';
 import {parse} from 'graphql/language/parser';
-import {mergeDeepWithArrs} from '../node_modules/cashay/lib/mergeDeep';
+import {mergeDeepWithArrs} from 'cashay/lib/mergeDeep';
 import {front5Response, front5Query, front3Query,
   front2AfterQuery, front3Response, front2AfterResponse,
-  front5Normalized, frontPaginationWords, front5QueryAfter5, front5ResponseAfter5} from '../node_modules/cashay/lib/__tests__/_front';
-import {unionQueryString, unionNormalized, unionNormalizedMissingOwner, unionQueryStringExtraOwner, unionResponseMissingOwner} from '../node_modules/cashay/lib/__tests__/_union'
+  front5Normalized, frontPaginationWords, front5QueryAfter5, front5ResponseAfter5} from 'cashay/lib/__tests__/_front';
+import {unionQueryString, unionNormalized, unionNormalizedMissingOwner, unionQueryStringExtraOwner,
+  unionResponseMissingOwner, initialState, initialStateResponse} from 'cashay/lib/__tests__/_union'
 import {nestedQueryString, nestedResponse,
   nestedNormalized, nestedPaginationWords, nestedVariableValues, nestedNormalizedNoFirstAuthor,
-  nestedNormalizedNoFirstComments} from '../node_modules/cashay/lib/__tests__/_nested'
+  nestedNormalizedNoFirstComments} from 'cashay/lib/__tests__/_nested'
+// import {print} from 'graphql/language/printer';
 // front 3 then 2
 //const queryAST3 = parse(front3Query, {noLocation: true, noSource: true});
 //const context3 = buildExecutionContext(clientSchema, queryAST3, {idFieldName: '_id', paginationWords: frontPaginationWords});
@@ -57,16 +59,13 @@ import {nestedQueryString, nestedResponse,
 //console.log('response',denormalizedResponse)
 
 //missing union
-const queryAST = parse(unionQueryString, {noLocation: true, noSource: true});
 const unionOptions = {
   variableValues: nestedVariableValues,
   paginationWords: nestedPaginationWords,
   idFieldName: '_id',
-  store: unionNormalized
+  store: initialState
 };
-const context = buildExecutionContext(clientSchema, queryAST, unionOptions);
-const denormalizedResponse = denormalizeStore(context);
-const minimizedQuery = minimizeQueryAST(queryAST.definitions[0], context.idFieldName);
+const context = buildExecutionContext(clientSchema, unionQueryString, unionOptions);
+export const denormalizedResponse = denormalizeStore(context);
+// const minimizedQuery = printMinimalQuery(queryAST, context.idFieldName);
 console.log('response',denormalizedResponse);
-console.log('min query', minimizedQuery);
-

@@ -330,7 +330,6 @@ const Mutation = new GraphQLObjectType({
         twitterHandle: {type: GraphQLString}
       },
       resolve: function (source, args) {
-        debugger
         let author = _.clone(args);
         if (AuthorsMap[args._id]) {
           throw new Error("Author already exists: " + author._id);

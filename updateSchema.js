@@ -1,4 +1,4 @@
-require('babel-core/register');
+require('babel-register');
 
 const path = require('path');
 const rootSchema = require('./src/schema');

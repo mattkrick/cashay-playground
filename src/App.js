@@ -3,9 +3,7 @@ import GraphiQL from 'graphiql';
 import fetch from 'isomorphic-fetch';
 import gqlSchema from './schema.js';
 import { graphql } from 'graphql';
-import {arrayOf, unionOf, Schema, normalize} from 'normalizr';
-import {data} from './normalizeSetup';
-//import {normalizedResponse} from './normalizeSetup';
+import {denormalizedResponse} from './normalizeSetup';
 
 
 GraphiQL.Logo = class Logo extends Component {
@@ -21,23 +19,6 @@ GraphiQL.Logo = class Logo extends Component {
     );
   }
 }
-
-const post = new Schema('Post');
-const comment = new Schema('Comment');
-const author = new Schema('Author');
-const reply = new Schema('Reply');
-
-comment.define({
-  replies: arrayOf(reply)
-});
-post.define({
-  author,
-  comments: arrayOf(comment)
-});
-
-const dataSchema = {
-  recentPosts: arrayOf(post)
-};
 
 export default class App extends Component {
   fetchData({query, variables}) {
