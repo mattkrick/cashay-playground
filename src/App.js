@@ -3,7 +3,7 @@ import GraphiQL from 'graphiql';
 import fetch from 'isomorphic-fetch';
 import gqlSchema from './schema.js';
 import { graphql } from 'graphql';
-import {denormalizedResponse} from './normalizeSetup';
+// import {denormalizedResponse} from './normalizeSetup';
 
 
 GraphiQL.Logo = class Logo extends Component {

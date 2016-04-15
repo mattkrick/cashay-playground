@@ -1,7 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-// import App from './App';
-import ListPosts from './ListPosts';
+import App from './App';
+// import ListPosts from './ListPosts';
+import PostContainer from './PostContainer';
 import {createStore, compose, combineReducers} from 'redux'
 import {Provider} from 'react-redux';
 import {} from 'redux';
@@ -30,7 +31,7 @@ export const cashay = new Cashay({
 
 render(
   <Provider store={store}>
-    <ListPosts />
+    <PostContainer />
   </Provider>
   , document.getElementById('root')
 );

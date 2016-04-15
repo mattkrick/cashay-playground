@@ -63,9 +63,9 @@ const unionOptions = {
   variableValues: nestedVariableValues,
   paginationWords: nestedPaginationWords,
   idFieldName: '_id',
-  store: initialState
+  store: nestedNormalizedNoFirstAuthor
 };
-const context = buildExecutionContext(clientSchema, unionQueryString, unionOptions);
+const context = buildExecutionContext(clientSchema, nestedQueryString, unionOptions);
 export const denormalizedResponse = denormalizeStore(context);
 // const minimizedQuery = printMinimalQuery(queryAST, context.idFieldName);
 console.log('response',denormalizedResponse);
