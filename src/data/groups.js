@@ -1,12 +1,14 @@
 export default {
-  executiveTeam: {
-    "_id": "executiveTeam",
-    "ownerId": "arunoda",
-    "members": ['arunoda', 'pahan']
+  g123: {
+    name: 'executive team',
+    _id: 'g123',
+    ownerId: 'a123',
+    members: ['a123', 'a124']
   },
-  allEmployees: {
-    "_id": "allEmployees",
-    "ownerId": "arunoda",
-    "members": ['indi', 'executiveTeam']
+  g124: {
+    name: 'all employees',
+    _id: 'g124',
+    ownerId: 'a123',
+    members: ['a125', 'g123']
   }
 }

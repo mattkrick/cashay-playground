@@ -1,19 +1,17 @@
-const AuthorsMap = {
-  "arunoda": {
-    _id: "arunoda", 
-    name: "Arunoda Susiripala",
-    twitterHandle: "@arunoda"
+export default {
+  a123: {
+    _id: 'a123',
+    name: 'Matt K',
+    twitterHandle: 's@__mattk'
   },
-  "pahan": {
-    _id: "pahan", 
-    name: "Pahan Sarathchandra",
-    twitterHandle: "@pahans"
+  a124: {
+    _id: 'a124',
+    name: 'Joe J',
+    twitterHandle: '@__joej'
   },
-  "indi": {
-    _id: "indi", 
-    name: "Kasun Indi",
-    twitterHandle: "@indi"
+  a125: {
+    _id: 'a125',
+    name: 'Rob R',
+    twitterHandle: '@__robr'
   }
 };
-
-export default AuthorsMap;

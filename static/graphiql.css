@@ -1,9 +1,42 @@
+.postContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.recentPosts {
+  margin: 16px;
+}
+
+.latestAndById {
+  margin: 16px;
+}
+
+.showComments {
+  font-size: .6em;
+  text-align: right;
+  color: blue;
+  cursor: pointer;
+}
+
+.commentText {
+  font-size: .8em;
+  padding: 16px;
+}
+
+.newComment {
+  font-size: .8em;
+  padding-left: 16px;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   overflow: hidden;
   width: 100%;
+  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
 }
+
+
 
 #graphiql-container {
   color: #141823;
@@ -13,7 +46,6 @@ html, body {
   -webkit-flex-direction: row;
           flex-direction: row;
   height: 100%;
-  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   font-size: 14px;
 }
 

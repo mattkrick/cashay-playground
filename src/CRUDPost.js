@@ -20,25 +20,16 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-@connect(mapStateToProps)
+// @connect(mapStateToProps)
 export default class LatestPost extends Component {
   render() {
-    const {data: {latestPost}, setVariables} = this.props.cashay;
+    // const {data: {latestPost}, setVariables} = this.props.cashay;
     return (
       <div>
+        <h2>CRUD Post</h2>
         <div>{this.renderPost(latestPost)}</div>
-        <button onClick={this.get5More}>"Get 5 More"</button>
       </div>
     );
-  }
-
-  get5More() {
-    const {setVariables} = this.props.cashay;
-    setVariables(currentVariables => {
-      return {
-        count: currentVariables.count + 5
-      }
-    })
   }
 
   renderPost(post) {

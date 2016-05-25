@@ -1,32 +1,20 @@
-const CommentList = [
-  {
-    _id: "cid-" + Math.ceil(Math.random() * 99999999),
-    content: "This is a very good blog post",
-    author: "pahan"
-  },
-
-  {
-    _id: "cid-" + Math.ceil(Math.random() * 99999999),
-    content: "Keep up the good work",
-    author: "indi"
-  }
-];
-
-const ReplyList = [
-  {
-    _id: "cid-" + Math.ceil(Math.random() * 99999999),
-    content: "Thank You!",
-    author: "arunoda"
-  },
-
-  {
-    _id: "cid-" + Math.ceil(Math.random() * 99999999),
-    content: "If you need more information, just contact me.",
-    author: "arunoda"
-  },
-];
-
 export default {
-  CommentList,
-  ReplyList
-};
+  c123: {
+    _id: 'c123',
+    cursor: 'c123',
+    content: 'This is great!',
+    author: 'a125',
+    postId: 'p126',
+    karma: 5,
+    createdAt: 1463074881798
+  },
+  c124: {
+    _id: 'c124',
+    cursor: 'c124',
+    content: 'Do you want to make $67,000/hr working from home? This single mom can do it!',
+    author: 'a124',
+    postId: 'p126',
+    karma: -100,
+    createdAt: 1463078881798
+  }
+}
