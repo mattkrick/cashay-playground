@@ -32,3 +32,4 @@ export default class CreateComment extends Component {
     cashay.mutate('createComment', {variables, componentIds: `comments${variables.postId}`})
   }
 }
+

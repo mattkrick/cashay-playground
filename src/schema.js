@@ -14,7 +14,8 @@ import {
   GraphQLInterfaceType,
   GraphQLUnionType,
   GraphQLInputObjectType,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLFloat
 } from 'graphql';
 
 const handlePaginationArgs = ({beforeCursor, afterCursor, first, last}, objs) => {
@@ -82,7 +83,7 @@ const CommentType = new GraphQLObjectType({
         return AuthorDB[author];
       }
     },
-    createdAt: {type: GraphQLInt},
+    createdAt: {type: GraphQLFloat},
     cursor: {type: GraphQLString},
     karma: {type: GraphQLInt},
     postId: {type: GraphQLString}
@@ -291,7 +292,6 @@ const Query = new GraphQLObjectType({
         postId: {type: new GraphQLNonNull(GraphQLString)}
       },
       resolve: function(source, {postId}) {
-        // debugger
         const commentKeys = Object.keys(CommentDB);
         const filteredCommentKeys = commentKeys.filter(key => CommentDB[key].postId === postId);
         return filteredCommentKeys.map(key => CommentDB[key]);
@@ -353,15 +353,6 @@ const Mutation = new GraphQLObjectType({
         members: {type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(NewMember)))}
       },
       resolve(source, {members}) {
-        // const newPost = {
-        //   _id,
-        //   content,
-        //   postId,
-        //   karma: 0,
-        //   author: 'a125',
-        //   createdAt: Date.now()
-        // };
-        // CommentDB[_id] = newPost;
         return members;
       }
     }

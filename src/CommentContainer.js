@@ -45,8 +45,9 @@ const mutationHandlers = {
       currentResponse.comments.splice(spliceLocation, 0, newComment);
       return currentResponse;
     }
-    const optimisticDocIdx = currentResponse.comments.findIndex(comment => comment._id === docFromServer.newComment._id);
-    currentResponse.comments[optimisticDocIdx] = docFromServer.newComment;
+    debugger
+    const optimisticDocIdx = currentResponse.comments.findIndex(comment => comment._id === docFromServer.createComment._id);
+    currentResponse.comments[optimisticDocIdx] = docFromServer.createComment;
     return currentResponse;
   }
 };

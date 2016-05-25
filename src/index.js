@@ -1,7 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
 import App from './App';
-// import ListPosts from './ListPosts';
 import CashayBook from './CashayBook';
 import {createStore, compose, combineReducers} from 'redux'
 import {Provider} from 'react-redux';
@@ -10,7 +9,7 @@ import {Cashay, cashayReducer} from 'cashay';
 import gqlSchema from './schema.js';
 import clientSchema from 'cashay/src/__tests__/clientSchema.json';
 import {graphql} from 'graphql';
-
+import {parse} from 'graphql/language/parser';
 const rootReducer = combineReducers({
   cashay: cashayReducer
 });
@@ -53,7 +52,13 @@ const mut2 = `mutation($postId: String!, $content: String!) {
       }
     }`;
 
-// console.log(parse(mut1, {noLocation: true, noSource: true}));
+const mutmut = `
+mutation($postId: String!, $id: String!, $content: String!) {
+    createComment(postId: $postId, _id: $id, content: $content) {
+      _id
+    }
+  }`
+// console.log(parse(mutmut, {noLocation: true, noSource: true}));
 // render(<App />, document.getElementById('root'));
 //
 
