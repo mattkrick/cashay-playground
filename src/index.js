@@ -7,8 +7,9 @@ import {Provider} from 'react-redux';
 import {} from 'redux';
 import {Cashay, cashayReducer} from 'cashay';
 import gqlSchema from './schema.js';
-import clientSchema from 'cashay/src/__tests__/clientSchema.json';
+import clientSchema from './clientSchema.json';
 import {graphql} from 'graphql';
+
 const rootReducer = combineReducers({
   cashay: cashayReducer
 });

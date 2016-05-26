@@ -53,7 +53,6 @@ const mutationHandlers = {
 
 const mapStateToProps = (state, props) => {
   const {postId} = props;
-  console.log('mapState comments', state, props)
   return {
     cashay: cashay.query(queryCommentsForPostId, {
       variables: {postId},

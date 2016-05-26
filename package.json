@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node dev-server.js",
     "lint": "eslint src",
-    "updateSchema": "node updateSchema.js"
+    "updateSchema": "node node_modules/cashay/updateSchema.js src/schema.js src/clientSchema.json"
   },
   "repository": {
     "type": "git",
