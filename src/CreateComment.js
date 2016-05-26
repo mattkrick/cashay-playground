@@ -29,7 +29,6 @@ export default class CreateComment extends Component {
       _id: uuid.v4()
     };
     this.setState({content: ''});
-    cashay.mutate('createComment', {variables, componentIds: `comments${variables.postId}`})
+    cashay.mutate('createComment', {variables, components: {comments: variables.postId}})
   }
 }
-
