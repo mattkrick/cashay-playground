@@ -3,6 +3,7 @@ really boring &amp; uninteresting &amp; definitely not click worthy
 
 ## Installation
 - `git clone https://github.com/mattkrick/cashay-playground.git`
+- `npm run updateSchema`
 - `npm i && npm start`
 
 ## Things to do in the playground
