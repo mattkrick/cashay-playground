@@ -3,8 +3,8 @@ really boring &amp; uninteresting &amp; definitely not click worthy
 
 ## Installation
 - `git clone https://github.com/mattkrick/cashay-playground.git`
-- `npm run updateSchema`
 - `npm i && npm start`
+- `npm run updateSchema` (optional, run this whenever you change the schema)
 
 ## Things to do in the playground
 - Server calls are delayed by 1 second to see all the optimistic goodness
