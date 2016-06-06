@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "scripts": {
-    "start": "node dev-server.js",
+    "start": "node server.js",
     "lint": "eslint src",
     "updateSchema": "node node_modules/cashay/updateSchema.js src/schema.js src/clientSchema.json"
   },
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.9.0",
+    "body-parser": "^1.15.1",
     "cashay": "^0.4.1",
     "express": "4.x.x",
     "graphiql": "^0.7.1",

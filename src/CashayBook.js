@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import RecentPosts from './RecentPosts';
+import LeastRecentPosts from './LeastRecentPosts';
 import {cashay} from './index';
 import {connect} from 'react-redux';
 
@@ -14,6 +15,12 @@ const mutationHandlers = {
       return currentResponse.postCount++;
     }
     return docFromServer.createPost.postCount;
+  },
+  removePostById(optimisticVariables, docFromServer, currentResponse) {
+    if (optimisticVariables) {
+      return currentResponse.postCount--;
+    }
+    return docFromServer.removePostById.postCount;
   }
 };
 

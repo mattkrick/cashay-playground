@@ -5,7 +5,7 @@ import CashayBook from './CashayBook';
 import {createStore, compose, combineReducers} from 'redux'
 import {Provider} from 'react-redux';
 import {} from 'redux';
-import {Cashay, cashayReducer} from 'cashay';
+import {Cashay, cashayReducer, HTTPTransport} from 'cashay';
 import gqlSchema from './schema.js';
 import clientSchema from './clientSchema.json';
 import {graphql} from 'graphql';
@@ -14,19 +14,19 @@ const rootReducer = combineReducers({
   cashay: cashayReducer
 });
 
+const transport = new HTTPTransport('/graphql');
+
 const devtoolsExt = global.devToolsExtension && global.devToolsExtension();
 const store = createStore(rootReducer, {}, compose(
   devtoolsExt || (f => f)
 ));
-
-const delay = () => new Promise(resolve => setTimeout(resolve, 1000));
 
 export const cashay = new Cashay({
   store,
   schema: clientSchema,
   idFieldName: '_id',
   paginationWords: {before: 'beforeCursor', after: 'afterCursor'},
-  transport: (query, variables) => delay().then(() => graphql(gqlSchema, query, null, null, variables))
+  transport
 });
 
 render(

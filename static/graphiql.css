@@ -18,6 +18,13 @@
   cursor: pointer;
 }
 
+.deleteMe {
+  font-size: .6em;
+  text-align: right;
+  color: darkred;
+  cursor: pointer;
+}
+
 .commentText {
   font-size: .8em;
   padding: 16px;

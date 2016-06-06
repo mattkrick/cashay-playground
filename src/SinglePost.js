@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CommentContainer from './CommentContainer';
+import {cashay} from './index';
 
 export default class SinglePost extends Component {
   constructor(props) {
@@ -11,16 +12,26 @@ export default class SinglePost extends Component {
     const {showComments} = this.state;
     return (
       <div>
-        <div>{post.title}</div>
+        <div>
+          <span>{post.title}</span>
+          <span className="deleteMe" onClick={this.deletePost}>     Delete Me</span>
+        </div>
         {showComments ? <CommentContainer postId={post._id}/> : null}
-        <div onClick={() => this.toggleComments()} className="showComments">
+        <div onClick={this.toggleComments} className="showComments">
           {showComments ? 'Hide Comments' : 'Show Comments'}
         </div>
         <br/>
       </div>
     )
   }
-  toggleComments() {
+  deletePost = () => {
+    const variables = {
+      postId: this.props.post._id
+    };
+    cashay.mutate('removePostById', {variables});
+  };
+
+  toggleComments = () => {
     this.setState({showComments: !this.state.showComments})
   }
 }
