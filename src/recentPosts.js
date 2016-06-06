@@ -9,9 +9,20 @@ const queryRecentPosts = `
     recentPosts: getRecentPosts(first: $count) {
       _id,
       title,
-      cursor
+      cursor,
+      spanishTitle: title(language:"spanish"),
+      reverseSpanishTitle: title(language:"spanish", inReverse:true)
     }
   }`;
+
+const customMutations = {
+  removePostById: `
+  mutation($postId: String!) {
+    removePostById(postId: $postId) {
+      removedPostId
+    }
+  }`
+};
 
 const mutationHandlers = {
   createPost(optimisticVariables, docFromServer, currentResponse, state, invalidate) {
@@ -26,12 +37,21 @@ const mutationHandlers = {
     const optimisticDocIdx = currentResponse.recentPosts.findIndex(post => post._id === docFromServer.createPost.post._id);
     currentResponse.recentPosts[optimisticDocIdx] = docFromServer.createPost.post;
     return currentResponse;
+  },
+  removePostById(optimisticVariables, docFromServer, currentResponse) {
+    // example of not using optimistic updates
+    const idRemoved =  docFromServer && docFromServer.removePostById.removedPostId;
+    if (idRemoved) {
+      const idx = currentResponse.recentPosts.findIndex(post => post._id === idRemoved);
+      currentResponse.recentPosts.splice(idx, 1);
+      return currentResponse;
+    }
   }
 };
 
 const mapStateToProps = (state, props) => {
   return {
-    cashay: cashay.query(queryRecentPosts, {variables: {count: 2}, mutationHandlers})
+    cashay: cashay.query(queryRecentPosts, {variables: {count: 2}, mutationHandlers, customMutations, component: 'RecentPosts'})
   }
 };
 
