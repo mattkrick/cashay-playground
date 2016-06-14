@@ -68,7 +68,6 @@ export default class CommentContainer extends Component {
   render() {
     const {comments} = this.props.cashay.data;
     const {postId} = this.props;
-    console.log('comments', comments)
     return (
       <div>
         <div>{comments.map(comment => <Comment key={`comment${comment._id}`} comment={comment}/>)}</div>

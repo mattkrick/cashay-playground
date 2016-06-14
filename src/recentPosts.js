@@ -25,7 +25,7 @@ const customMutations = {
 };
 
 const mutationHandlers = {
-  createPost(optimisticVariables, docFromServer, currentResponse, state, invalidate) {
+  createPost(optimisticVariables, docFromServer, currentResponse, getEntities, invalidate) {
     if (optimisticVariables) {
       const {newPost} = optimisticVariables;
       const newOptimisticPost = Object.assign({}, newPost, {
@@ -34,6 +34,7 @@ const mutationHandlers = {
       currentResponse.recentPosts.unshift(newOptimisticPost);
       return currentResponse;
     }
+    // const foo = getEntities('PostType');
     const optimisticDocIdx = currentResponse.recentPosts.findIndex(post => post._id === docFromServer.createPost.post._id);
     currentResponse.recentPosts[optimisticDocIdx] = docFromServer.createPost.post;
     return currentResponse;

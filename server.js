@@ -19,13 +19,17 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 app.use('/static', express.static('static'));
 app.use('/graphql', function(req, res) {
-  const {query, variables} = req.body;
+  // const {query, variables} = req.body;
+  const query = req.body.query;
+  const variables = req.body.variables;
   const authToken = req.user || {};
   const context = {authToken};
   graphql(Schema, query, null, context, variables)
     .then(result => {
       if (result.errors) {
+        console.log(query)
         console.log('DEBUG GraphQL Error:', result.errors);
+
       }
       return result;
     })

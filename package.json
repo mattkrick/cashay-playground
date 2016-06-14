@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "updateSchema": "node node_modules/cashay/updateSchema.js src/schema.js src/clientSchema.json"
+    "updateSchema": "cashay-schema src/schema.js src/clientSchema.json"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "1.2.6",
     "babel-cli": "6.9.0",
-    "babel-core": "6.9.0",
+    "babel-core": "6.9.1",
     "babel-loader": "6.2.4",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-transform": "2.0.2",
@@ -47,9 +47,9 @@
     "babel-register": "6.9.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
     "body-parser": "^1.15.1",
-    "cashay": "^0.5.0",
+    "cashay": "^0.6.1",
     "express": "4.x.x",
     "graphiql": "^0.7.1",
     "graphql": "^0.6.0",

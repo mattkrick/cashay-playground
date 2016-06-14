@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import RecentPosts from './RecentPosts';
 import LeastRecentPosts from './LeastRecentPosts';
+import LatestPostComments from './LatestPostComments';
 import {cashay} from './index';
 import {connect} from 'react-redux';
 
@@ -10,7 +11,7 @@ const queryPostCount = `
   }`;
 
 const mutationHandlers = {
-  createPost(optimisticVariables, docFromServer, currentResponse, state, invalidate) {
+  createPost(optimisticVariables, docFromServer, currentResponse, getEntities, invalidate) {
     if (optimisticVariables) {
       return currentResponse.postCount++;
     }
@@ -23,8 +24,11 @@ const mutationHandlers = {
     return docFromServer.removePostById.postCount;
   }
 };
-
-const mapStateToProps = () => ({cashay: cashay.query(queryPostCount, {mutationHandlers})});
+const cashayOptions = {
+  component: 'CashayBook',
+  mutationHandlers
+};
+const mapStateToProps = () => ({cashay: cashay.query(queryPostCount, cashayOptions)});
 
 @connect(mapStateToProps)
 export default class CashayBook extends Component {
@@ -37,6 +41,7 @@ export default class CashayBook extends Component {
           <h1>Welcome to the Cashay book!</h1>
           <h3>{isComplete ? `We currently have ${postCount} posts!` : "LOADING AHH I CANT WAIT IM SO EXCITED"}</h3>
           <RecentPosts/>
+          <LatestPostComments/>
         </div>
       </div>
     );

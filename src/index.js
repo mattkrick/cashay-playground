@@ -4,7 +4,6 @@ import App from './App';
 import CashayBook from './CashayBook';
 import {createStore, compose, combineReducers} from 'redux'
 import {Provider} from 'react-redux';
-import {} from 'redux';
 import {Cashay, cashayReducer, HTTPTransport} from 'cashay';
 import gqlSchema from './schema.js';
 import clientSchema from './clientSchema.json';
