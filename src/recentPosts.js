@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {cashay} from './index';
+import {cashay} from 'cashay';
 import SinglePost from './SinglePost';
 import uuid from 'node-uuid';
 
@@ -79,7 +79,7 @@ export default class RecentPosts extends Component {
         title: 'Woo another post!'
       }
     };
-    cashay.mutate('createPost', {variables})
+    cashay.mutate('createPost', {variables});
   };
 
   get2More = () => {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {cashay} from './index';
+import {cashay} from 'cashay';
 import uuid from 'node-uuid';
 
 export default class CreateComment extends Component {

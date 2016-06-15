@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import RecentPosts from './RecentPosts';
 import LeastRecentPosts from './LeastRecentPosts';
 import LatestPostComments from './LatestPostComments';
-import {cashay} from './index';
+import {cashay} from 'cashay';
 import {connect} from 'react-redux';
 
 const queryPostCount = `
@@ -21,7 +21,8 @@ const mutationHandlers = {
     if (optimisticVariables) {
       return currentResponse.postCount--;
     }
-    return docFromServer.removePostById.postCount;
+    currentResponse.postCount = docFromServer.removePostById.postCount;
+    return currentResponse;
   }
 };
 const cashayOptions = {

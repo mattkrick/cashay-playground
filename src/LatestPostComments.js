@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {cashay} from './index';
+import {cashay} from 'cashay';
 import {connect} from 'react-redux';
 import Comment from './Comment';
 const queryPostCount = `
@@ -15,9 +15,8 @@ const queryPostCount = `
 const cashayOptions = {
   component: 'LatestPostComments',
   variables: {
-    postId: response => response.latestPostId
+    postId: (response, cashayDataState) => response.latestPostId
   }
-  // mutationHandlers
 };
 const mapStateToProps = (state, props) => {
   return {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {cashay} from './index';
+import {cashay} from 'cashay';
 import Comment from './Comment';
 import CreateComment from './CreateComment'
 // import uuid from 'node-uuid';

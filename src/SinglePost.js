@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CommentContainer from './CommentContainer';
-import {cashay} from './index';
+import {cashay} from 'cashay';
 
 export default class SinglePost extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class SinglePost extends Component {
       <div>
         <div>
           <span>{post.title}</span>
-          <span className="deleteMe" onClick={this.deletePost}>     Delete Me</span>
+          <span className="deleteMe" onClick={this.deletePost}>     Try to Delete Me</span>
         </div>
         {showComments ? <CommentContainer postId={post._id}/> : null}
         <div onClick={this.toggleComments} className="showComments">

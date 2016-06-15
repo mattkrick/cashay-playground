@@ -4,9 +4,9 @@ import App from './App';
 import CashayBook from './CashayBook';
 import {createStore, compose, combineReducers} from 'redux'
 import {Provider} from 'react-redux';
-import {Cashay, cashayReducer, HTTPTransport} from 'cashay';
+import {cashay, cashayReducer, HTTPTransport} from 'cashay';
 import gqlSchema from './schema.js';
-import clientSchema from './clientSchema.json';
+const clientSchema = require('cashay!./getCashaySchema.js');
 import {graphql} from 'graphql';
 
 const rootReducer = combineReducers({
@@ -20,7 +20,7 @@ const store = createStore(rootReducer, {}, compose(
   devtoolsExt || (f => f)
 ));
 
-export const cashay = new Cashay({
+cashay.create({
   store,
   schema: clientSchema,
   idFieldName: '_id',
